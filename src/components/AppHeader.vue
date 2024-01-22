@@ -14,7 +14,7 @@ export default {
 <template>
     <header>
 
-        <div class="row p-3">
+        <div class="row m-3">
             <div class="col-1 d-flex">
                 <img src="../../public/Yu-Gi-Oh!Logo.jpg" alt="logo" class="align-self-center">
             </div>

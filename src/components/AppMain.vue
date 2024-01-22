@@ -1,11 +1,14 @@
 <script>
+import SingleCard from './SingleCard.vue';
 
 export default {
     data() {
         return {
-
         };
     },
+    components:{
+		SingleCard,
+	},
     methods: {
 
     }
@@ -14,11 +17,7 @@ export default {
 
 <template>
 
-    <main class="container">
-
-        
-
-    </main>
+    <SingleCard />
 
 </template>
 
@@ -26,7 +25,5 @@ export default {
 @use "../assets/scss/partials/variables.scss" as *;
 @use "../assets/scss/partials/mixins.scss" as *;
 
-main {
-    background-color: $primary;
-}
+
 </style>
