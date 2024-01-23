@@ -1,20 +1,29 @@
 <script>
 import SingleCard from './SingleCard.vue';
-import Filter  from './Filter.vue';
+//import Filter  from './Filter.vue';
 import { store } from '../store.js';
+import axios from 'axios';
 
 export default {
     data() {
         return {
             store,
+            optionArchetype: '',
         };
     },
     components:{
 		SingleCard,
-        Filter,
 	},
     methods: {
 
+        selectArchetype (){
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=60&offset=0',{
+            params:{
+              archetype : this.optionArchetype,
+            }}).then((response)=>{
+              this.store.cards = response.data.data
+            })
+        }
     }
 }
 </script>
@@ -30,7 +39,16 @@ export default {
             </div>
             <div v-else>
 
-                <Filter />
+                <div class="container row p-3">
+                    <h4>Search Cards by Archetype</h4>
+                    <div class="form col-6">
+                        <select v-model="optionArchetype" class="form-select w-50 p-2" id="Select">
+                            <option value="" selected>Select Archetype</option>
+                            <option v-for="(archetype, i) in store.archetypes" :key="i" :value="archetype.archetype_name" >{{ archetype.archetype_name }}</option>
+                        </select>
+                        <button @click="selectArchetype" type="submit" class="btn btn-danger my-3">Search</button>
+                    </div>
+                </div>
 
                 <div class="bg-white p-5">
                     <div class=" text-white bg-dark p-3">

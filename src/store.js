@@ -6,5 +6,6 @@ export const store = reactive({
     cards: [],
     archetypes:[],
     loading: false,
-    optionArchetype: '',
+    cardNum     : 60,
+    cardOffset  : 0,
 });
